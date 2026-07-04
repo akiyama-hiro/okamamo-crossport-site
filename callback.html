@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>認証完了 | okamamo-crossport</title><link rel="stylesheet" href="_style.css"></head><body>
+<h1>認証が完了しました</h1>
+<p>下の「認証コード」を Claude Code に伝えてください。このページは閉じて構いません。</p>
+<p style="font-size:13px;color:#5B6B73">コードの有効期限は短い(数分)ので、表示されたらすぐの共有をおすすめします。</p>
+<div id="code" style="font-family:monospace;font-size:15px;background:#EEF1F3;padding:16px;border-radius:6px;word-break:break-all">(URLにコードが見つかりません)</div>
+<script>
+const p = new URLSearchParams(location.search);
+const c = p.get("code");
+if (c) document.getElementById("code").textContent = c;
+else if (p.get("error")) document.getElementById("code").textContent = "エラー: " + p.get("error") + " / " + (p.get("error_description")||"");
+</script>
+<footer>okamamo-crossport 認証用ページ</footer>
+</body></html>
